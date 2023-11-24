@@ -6,6 +6,7 @@ import { DyChartsComponent } from './dy-charts.component';
 import { DyBarComponent } from './dy-bar/dy-bar.component';
 import { DyLineComponent } from './dy-line/dy-line.component';
 import { DyPieComponent } from './dy-pie/dy-pie.component';
+import { DyRadarComponent } from './dy-radar/dy-radar.component';
 
 
 @NgModule({
@@ -13,11 +14,13 @@ import { DyPieComponent } from './dy-pie/dy-pie.component';
     DyChartsComponent,
     DyBarComponent,
     DyLineComponent,
-    DyPieComponent
+    DyPieComponent,
+    DyRadarComponent
   ],
   imports: [
     CommonModule,
     DyChartsRoutingModule
-  ]
+  ],
+  exports:[DyPieComponent]
 })
 export class DyChartsModule { }
