@@ -1,20 +1,19 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Chart } from 'chart.js';
 import { IchartDataset } from 'src/app/model/charts';
-Chart.register(...registerables);
 
 @Component({
-  selector: 'dy-pie',
-  templateUrl: './dy-pie.component.html',
-  styleUrls: ['./dy-pie.component.scss']
+  selector: 'dy-radar',
+  templateUrl: './dy-radar.component.html',
+  styleUrls: ['./dy-radar.component.scss']
 })
-export class DyPieComponent implements OnInit, AfterViewInit {
+export class DyRadarComponent {
 
   @Input() labels !: Array<string>;
   @Input() datasets !: Array<IchartDataset>;
 
 
-  @ViewChild('piechart') piechart!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('radarchart') radarchart!: ElementRef<HTMLCanvasElement>;
 
   constructor() { }
 
@@ -26,9 +25,9 @@ export class DyPieComponent implements OnInit, AfterViewInit {
   }
 
   private createPieChart(): Chart<any> {
-    return new Chart(this.piechart.nativeElement, {
+    return new Chart(this.radarchart.nativeElement, {
       // type :- pie, bar, line, radar, bubble, polarArea
-      type: 'pie',
+      type: 'radar',
       data: {
         labels: this.labels,
         datasets: this.datasets
@@ -44,8 +43,3 @@ export class DyPieComponent implements OnInit, AfterViewInit {
   }
 
 }
-
-
-
-
-
